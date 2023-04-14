@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import PostComponent from "./post.component";
 
-const PostsComponent = ({fullPost}) => {
+const PostsComponent = () => {
 
     const [posts, setPosts] = useState([])
 
@@ -14,7 +14,7 @@ const PostsComponent = ({fullPost}) => {
     return (
         <div>
             {
-                posts.map(post => <PostComponent key={post.id} post={post} fullPost={fullPost}/>)
+                posts.map(post => <PostComponent key={post.id} post={post}/>)
             }
         </div>
     );
