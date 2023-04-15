@@ -1,9 +1,11 @@
-function App() {
-  return (
-    <div className="wrap">
+import React from 'react';
 
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+          
+        </div>
+    );
+};
 
 export default App;
