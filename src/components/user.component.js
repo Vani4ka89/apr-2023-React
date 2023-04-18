@@ -1,24 +1,15 @@
 import React from 'react';
 
-const UserComponent = ({user}) => {
-    console.log(user);
-    const {id, name, username, email, phone, website, address: {city, street, suite, zipcode, geo: {lat, lng}}, company: {bs, catchPhrase}} = user
+const UserComponent = ({user, setUserId}) => {
+
+    const {id, name, username} = user
+
     return (
         <div>
-            <div>{id}</div>
-            <div>{name}</div>
-            <div>{username}</div>
-            <div>{email}</div>
-            <div>{phone}</div>
-            <div>{website}</div>
-            <div>address: {city}</div>
-            <div>{street}</div>
-            <div>{suite}</div>
-            <div>{zipcode}</div>
-            <div>get: {lat}</div>
-            <div>{lng}</div>
-            <div>{bs}</div>
-            <div>{catchPhrase}</div>
+            <div>id: {id}</div>
+            <div>name: {name}</div>
+            <div>username: {username}</div>
+            <button onClick={() => setUserId(id)}>Post Details</button>
             <hr/>
         </div>
     );

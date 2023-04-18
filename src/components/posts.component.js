@@ -5,6 +5,7 @@ import PostComponent from "./post.component";
 const PostsComponent = () => {
 
     const [posts, setPosts] = useState([])
+    const [viewPost, setViewPost] = useState(false)
 
     useEffect(() => {
         axios('https://jsonplaceholder.typicode.com/posts',).then(value => value.data)
@@ -12,10 +13,20 @@ const PostsComponent = () => {
     }, [])
 
     return (
-        <div>
-            {
-                posts.map(post => <PostComponent key={post.id} post={post}/>)
-            }
+        <div className={'container'}>
+            <div className={'right-side'}>
+                {viewPost &&
+                    <div>
+                        <div>id: {viewPost.id}</div>
+                        <div>userId: {viewPost.userId}</div>
+                        <div>title: {viewPost.title}</div>
+                        <div>body: {viewPost.body}</div>
+                    </div>
+                }
+            </div>
+            <div className={'left-side'}>
+                {posts.map(post => <PostComponent key={post.id} post={post} setViewPost={setViewPost}/>)}
+            </div>
         </div>
     );
 };

@@ -1,24 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const PostComponent = ({post}) => {
-    const {id, title, userId, body} = post
-
-    const [viewPost, setViewPost] = useState(false)
+const PostComponent = ({post, setViewPost}) => {
+    const {id, title} = post
 
     return (
         <div>
             <p>id:{id}</p>
             <h3>title:{title}</h3>
-            <button onClick={() => setViewPost(prevState => !prevState)}>detail</button>
+            <button onClick={() => setViewPost(post)}>detail</button>
             <hr/>
-            {viewPost &&
-                <div>
-                    <div>id: {id}</div>
-                    <div>userId: {userId}</div>
-                    <div>title: {title}</div>
-                    <div>body: {body}</div>
-                </div>
-            }
         </div>
     );
 };
