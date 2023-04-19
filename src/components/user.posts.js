@@ -8,7 +8,7 @@ const UserPosts = ({userId}) => {
 
     useEffect(() => {
         axios(`https://jsonplaceholder.typicode.com/users/${userId}/posts`).then(value => value.data)
-            .then(posts => setUsersPosts([...posts]))
+            .then(postsOfUser => setUsersPosts([...postsOfUser]))
     }, [userId])
 
     return (

@@ -13,10 +13,10 @@ const PostsComponent = () => {
     }, [])
 
     return (
-        <div className={'container'}>
-            <div className={'right-side'}>
+        <div>
+            <div>
                 {viewPost &&
-                    <div>
+                    <div className={'post'}>
                         <div>id: {viewPost.id}</div>
                         <div>userId: {viewPost.userId}</div>
                         <div>title: {viewPost.title}</div>
@@ -24,7 +24,7 @@ const PostsComponent = () => {
                     </div>
                 }
             </div>
-            <div className={'left-side'}>
+            <div>
                 {posts.map(post => <PostComponent key={post.id} post={post} setViewPost={setViewPost}/>)}
             </div>
         </div>
