@@ -1,18 +1,23 @@
-import React from 'react';
-import Users from "./components/Users/Users";
+import React, {useState} from 'react';
+
+import {PageEnum} from "./configs/page.enum";
+import UserPage from "./components/Pages/UserPage";
+import CommentPage from "./components/Pages/CommentPage";
+import CarPage from "./components/Pages/CarPage";
+import Header from "./components/Header/Header";
 
 const App = () => {
+
+    const [choicePage, setChoicePage] = useState<PageEnum>(PageEnum.USERS)
+
     return (
         <div>
-            <Users/>
+            <Header setChoicePage={setChoicePage}/>
+            {choicePage === PageEnum.USERS && <UserPage/>}
+            {choicePage === PageEnum.COMMENTS && <CommentPage/>}
+            {choicePage === PageEnum.CARS && <CarPage/>}
         </div>
     );
 };
 
 export default App;
-
-
-// Зробити компонент, в якому буде форма, за допомоги якої можливо створити нового юзера постовим запитом
-// на http://jsonplaceholder.typicode.com/users
-//     Зробити компонент, в якому буде форма, за допомоги якої можливо створити новий комментар постовим запитом
-//     на http://jsonplaceholder.typicode.com/comments

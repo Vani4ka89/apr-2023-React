@@ -1,22 +1,22 @@
 import React, {FC} from 'react';
-
 import {useForm} from "react-hook-form";
-import {IUser} from "../../interfaces/user.interface";
-import {userServise} from "../../services/user.servise";
+
+import {IComment} from "../../interfaces/comment.interface";
+import {commentServise} from "../../services/comment.servise";
 
 interface IProps {
 
 }
 
-const UserForm: FC<IProps> = () => {
+const CommentForm: FC<IProps> = () => {
 
     const {
         register, handleSubmit, reset,
         formState: {isValid}
-    } = useForm<IUser>()
+    } = useForm<IComment>()
 
-    const save = async (user: IUser) => {
-        await userServise.create(user)
+    const save = async (comment: IComment) => {
+        await commentServise.getAll()
         reset()
     };
 
@@ -24,10 +24,10 @@ const UserForm: FC<IProps> = () => {
         <form onSubmit={handleSubmit(save)}>
             <input type="text" placeholder={'name'} {...register('name')}/>
             <input type="text" placeholder={'email'} {...register('email')}/>
-            <input type="text" placeholder={'username'} {...register('username')}/>
+            <input type="text" placeholder={'body'} {...register('body')}/>
             <button disabled={!isValid}>create</button>
         </form>
     );
 };
 
-export default UserForm;
+export default CommentForm;
