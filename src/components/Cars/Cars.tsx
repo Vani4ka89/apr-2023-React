@@ -5,14 +5,15 @@ import Car from "./Car";
 import {IUseState} from "../../types/useState.type";
 
 interface IProps {
-    cars: ICar[],
-    setCarForUpdate:IUseState<null>
+    cars: ICar[]
+    setAllCars: IUseState<boolean>
+    setCarForUpdate: IUseState<ICar | null>
 }
 
-const Cars: FC<IProps> = ({cars, setCarForUpdate}) => {
+const Cars: FC<IProps> = ({cars, setAllCars, setCarForUpdate}) => {
     return (
         <div>
-            {cars.map(car => <Car key={car.id} car={car} setCarForUpdate={setCarForUpdate}/>)}
+            {cars.map(car => <Car key={car.id} car={car} setAllCars={setAllCars} setCarForUpdate={setCarForUpdate}/>)}
         </div>
     );
 };
