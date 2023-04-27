@@ -48,18 +48,8 @@ const CarForm: FC<IProps> = ({setAllCars, carForUpdate, setCarForUpdate}) => {
         <div>
             <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
                 <input type="text" placeholder={'brand'} {...register('brand')}/>
-                <input type="text" placeholder={'price'} {...register('price', {
-                    valueAsNumber: true,
-                    min: {value: 0, message: 'min 0'},
-                    max: {value: 1000000, message: 'max 1000000'},
-                    required: true
-                })}/>
-                <input type="text" placeholder={'year'} {...register('year', {
-                    valueAsNumber: true,
-                    min: {value: 1990, message: 'min 1990'},
-                    max: {value: new Date().getFullYear(), message: 'поточний рік'},
-                    required: true
-                })}/>
+                <input type="text" placeholder={'price'} {...register('price')}/>
+                <input type="text" placeholder={'year'} {...register('year')}/>
                 <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Create'}</button>
             </form>
             <div>
