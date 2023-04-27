@@ -5,14 +5,14 @@ import {carServise} from "../../services/car.servise";
 import {IUseState} from "../../types/useState.type";
 
 interface IProps {
-    car: ICar
-    setAllCars: IUseState<boolean>
+    car: ICar;
+    setAllCars: IUseState<boolean>;
     setCarForUpdate: IUseState<ICar | null>
 }
 
 const Car: FC<IProps> = ({car, setAllCars, setCarForUpdate}) => {
 
-    const deleteCar = async (id: number) => {
+    const deleteCar = async () => {
         await carServise.deleteById(id)
         setAllCars(prev => !prev)
     }
@@ -25,7 +25,7 @@ const Car: FC<IProps> = ({car, setAllCars, setCarForUpdate}) => {
             <div>price: {price}</div>
             <div>brand: {brand}</div>
             <button onClick={() => setCarForUpdate(car)}>Edit</button>
-            <button onClick={() => deleteCar(id)}>Delete</button>
+            <button onClick={() => deleteCar()}>Delete</button>
             <hr/>
         </div>
     );

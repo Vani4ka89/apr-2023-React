@@ -4,6 +4,7 @@ import {IComment} from "../../interfaces/comment.interface";
 import {commentServise} from "../../services/comment.servise";
 import Comments from "../Comments/Comments";
 import CommentForm from "../Comments/CommentForm";
+import './comment.page.css'
 
 interface IProps {
 
@@ -19,9 +20,9 @@ const CommentPage: FC<IProps> = () => {
     }, [])
 
     return (
-        <div>
+        <div className={'comments'}>
             <hr/>
-            <CommentForm/>
+            <CommentForm setComments={setComments}/>
             <hr/>
             <Comments comments={comments}/>
         </div>

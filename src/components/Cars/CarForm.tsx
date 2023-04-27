@@ -8,8 +8,8 @@ import {IUseState} from "../../types/useState.type";
 import {carValidate} from "../../configs/car.validate";
 
 interface IProps {
-    setAllCars: IUseState<boolean>
-    carForUpdate: ICar | null
+    setAllCars: IUseState<boolean>;
+    carForUpdate: ICar | null;
     setCarForUpdate: IUseState<ICar | null>
 }
 
@@ -30,7 +30,7 @@ const CarForm: FC<IProps> = ({setAllCars, carForUpdate, setCarForUpdate}) => {
         }
     }, [carForUpdate, setValue])
 
-    const save: SubmitHandler<ICar> = async (car: ICar) => {
+    const save: SubmitHandler<ICar> = async (car) => {
         await carServise.create(car)
         setAllCars(prev => !prev)
         reset()
@@ -52,9 +52,9 @@ const CarForm: FC<IProps> = ({setAllCars, carForUpdate, setCarForUpdate}) => {
                 <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Create'}</button>
             </form>
             <div>
-                {errors.brand && <div>{errors.brand.message}</div>}
-                {errors.price && <div>{errors.price.message}</div>}
-                {errors.year && <div>{errors.year.message}</div>}
+                {errors.brand && <span>{errors.brand.message}</span>}
+                {errors.price && <span>{errors.price.message}</span>}
+                {errors.year && <span>{errors.year.message}</span>}
             </div>
         </div>
     );

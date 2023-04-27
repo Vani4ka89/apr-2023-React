@@ -5,8 +5,8 @@ import Car from "./Car";
 import {IUseState} from "../../types/useState.type";
 
 interface IProps {
-    cars: ICar[]
-    setAllCars: IUseState<boolean>
+    cars: ICar[];
+    setAllCars: IUseState<boolean>;
     setCarForUpdate: IUseState<ICar | null>
 }
 

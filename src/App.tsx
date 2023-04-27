@@ -5,6 +5,7 @@ import UserPage from "./components/Pages/UserPage";
 import CommentPage from "./components/Pages/CommentPage";
 import CarPage from "./components/Pages/CarPage";
 import Header from "./components/Header/Header";
+import './App.css'
 
 const App = () => {
 
@@ -13,9 +14,11 @@ const App = () => {
     return (
         <div>
             <Header setChoicePage={setChoicePage}/>
-            {choicePage === PageEnum.USERS && <UserPage/>}
-            {choicePage === PageEnum.COMMENTS && <CommentPage/>}
-            {choicePage === PageEnum.CARS && <CarPage/>}
+            <div className={'main-page'}>
+                {choicePage === PageEnum.USERS && <UserPage/>}
+                {choicePage === PageEnum.COMMENTS && <CommentPage/>}
+                {choicePage === PageEnum.CARS && <CarPage/>}
+            </div>
         </div>
     );
 };

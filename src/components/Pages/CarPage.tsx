@@ -13,7 +13,7 @@ const CarPage: FC<IProps> = () => {
 
     const [cars, setCars] = useState<ICar[]>([])
     const [allCars, setAllCars] = useState<boolean>(false)
-    const [carForUpdate, setCarForUpdate] = useState<ICar|null>(null)
+    const [carForUpdate, setCarForUpdate] = useState<ICar | null>(null)
 
     useEffect(() => {
         carServise.getAll().then(value => value.data)
