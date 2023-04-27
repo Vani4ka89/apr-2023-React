@@ -1,9 +1,11 @@
 import React, {FC, useEffect} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
 
 import {ICar} from "../../interfaces/car.interface";
 import {carServise} from "../../services/car.servise";
 import {IUseState} from "../../types/useState.type";
+import {carValidate} from "../../configs/car.validate";
 
 interface IProps {
     setAllCars: IUseState<boolean>
@@ -15,8 +17,8 @@ const CarForm: FC<IProps> = ({setAllCars, carForUpdate, setCarForUpdate}) => {
 
     const {
         register, handleSubmit, reset,
-        formState: {isValid}, setValue
-    } = useForm<ICar>({mode: 'all'})
+        formState: {isValid, errors}, setValue
+    } = useForm<ICar>({mode: 'all', resolver: joiResolver(carValidate)})
 
     useEffect(() => {
         if (carForUpdate) {
@@ -42,12 +44,19 @@ const CarForm: FC<IProps> = ({setAllCars, carForUpdate, setCarForUpdate}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
-            <input type="text" placeholder={'brand'} {...register('brand')}/>
-            <input type="text" placeholder={'price'} {...register('price')}/>
-            <input type="text" placeholder={'year'} {...register('year')}/>
-            <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Create'}</button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
+                <input type="text" placeholder={'brand'} {...register('brand')}/>
+                <input type="text" placeholder={'price'} {...register('price')}/>
+                <input type="text" placeholder={'year'} {...register('year')}/>
+                <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Create'}</button>
+            </form>
+            <div>
+                {errors.brand && <div>{errors.brand.message}</div>}
+                {errors.price && <div>{errors.price.message}</div>}
+                {errors.year && <div>{errors.year.message}</div>}
+            </div>
+        </div>
     );
 };
 
