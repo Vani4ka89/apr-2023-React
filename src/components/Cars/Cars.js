@@ -8,7 +8,7 @@ const Cars = () => {
 
     const [cars, setCars] = useState([])
     const [allCars, setAllCars] = useState(null)
-    const [carForUpdate, setCarForUpdate] = useState([])
+    const [carForUpdate, setCarForUpdate] = useState({})
 
     useEffect(() => {
         carService.getAll().then(value => value.data).then(cars => setCars([...cars]))

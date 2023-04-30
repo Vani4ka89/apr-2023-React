@@ -5,7 +5,7 @@ import {carService} from "../../services/car.service";
 
 const CarForm = ({setAllCars, carForUpdate}) => {
 
-    const {register, handleSubmit, reset, formState: {isValid}, setValue} = useForm()
+    const {register, handleSubmit, reset, formState: {isValid}, setValue} = useForm({mode: 'all'})
 
     useEffect(() => {
         if (carForUpdate) {
