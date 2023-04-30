@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import {userService} from "../../services/user.service";
 import User from "../User/User";
+import UserForm from "../UserForm/UserForm";
 
 const Users = () => {
 
@@ -13,6 +14,7 @@ const Users = () => {
 
     return (
         <div>
+            <UserForm setUsers={setUsers}/>
             {users.map(user => <User key={user.id} user={user}/>)}
         </div>
     );
