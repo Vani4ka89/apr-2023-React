@@ -9,6 +9,9 @@ const slice = createSlice({
     reducers: {
         setCars: (state, action) => {
             state.cars = action.payload
+        },
+        createCar: (state, action) => {
+            state.cars.push(action.payload)
         }
     }
 });

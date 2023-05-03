@@ -2,13 +2,17 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 
 import {carService} from "../../services";
+import {useDispatch} from "react-redux";
+import {carActions} from "../../redux";
 
 const CarForm = () => {
 
     const {register, handleSubmit, reset} = useForm()
+    const dispatch = useDispatch();
 
-    const create = (car) => {
-        carService.create(car)
+    const create = async (car) => {
+        const {data} = await carService.create(car)
+        dispatch(carActions.createCar(data))
         reset()
     }
 
