@@ -9,6 +9,9 @@ const slice = createSlice({
     reducers: {
         setUsers: (state, action) => {
             state.users = action.payload
+        },
+        createUser:(state, action) => {
+            state.users.push(action.payload)
         }
     }
 });

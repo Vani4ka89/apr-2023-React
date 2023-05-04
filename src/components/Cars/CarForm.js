@@ -1,28 +1,44 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
+import {useDispatch, useSelector} from "react-redux";
 
 import {carService} from "../../services";
-import {useDispatch} from "react-redux";
 import {carActions} from "../../redux";
 
 const CarForm = () => {
 
-    const {register, handleSubmit, reset} = useForm()
+    const {register, handleSubmit, reset, setValue} = useForm()
     const dispatch = useDispatch();
+    const {carForUpdate} = useSelector(state => state.cars)
+
+    useEffect(() => {
+        if (carForUpdate) {
+            setValue('brand', carForUpdate.brand)
+            setValue('price', carForUpdate.price)
+            setValue('year', carForUpdate.year)
+        }
+    }, [dispatch, carForUpdate, setValue])
 
     const create = async (car) => {
-        const {data} = await carService.create(car)
-        dispatch(carActions.createCar(data))
+        await carService.create(car)
+        dispatch(carActions.changeTrigger())
         reset()
     }
 
+    const update = async (car) => {
+        await carService.updateById(carForUpdate.id, car)
+        dispatch(carActions.changeTrigger())
+        reset()
+        dispatch(carActions.setCarForUpdate(null))
+    }
+
     return (
-        <form onSubmit={handleSubmit(create)}>
+        <form onSubmit={handleSubmit(carForUpdate ? update : create)}>
             <hr/>
             <input type="text" placeholder={'brand'} {...register('brand')}/>
             <input type="text" placeholder={'price'} {...register('price')}/>
             <input type="text" placeholder={'year'} {...register('year')}/>
-            <button>Create</button>
+            <button>{carForUpdate ? 'Update' : 'Create'}</button>
             <hr/>
         </form>
     );

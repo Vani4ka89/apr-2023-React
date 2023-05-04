@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import {commentService} from "../../services";
 import {useDispatch, useSelector} from "react-redux";
+
+import {commentService} from "../../services";
 import {commentActions} from "../../redux";
 import Comment from "./Comment";
 
