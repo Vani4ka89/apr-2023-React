@@ -1,8 +1,8 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
 
 import {userService} from "../../services";
-import {useDispatch} from "react-redux";
 import {userActions} from "../../redux";
 
 const UserForm = () => {
