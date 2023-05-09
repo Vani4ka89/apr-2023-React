@@ -12,8 +12,8 @@ type AppDispatch = AppStore['dispatch'];
 
 export type {
     RootState,
-    AppStore,
-    AppDispatch
+    AppDispatch,
+    AppStore
 }
 
 export {
