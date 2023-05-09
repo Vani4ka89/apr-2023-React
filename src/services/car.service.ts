@@ -1,5 +1,5 @@
 import {IRes} from "../types/response.type";
-import {ICar} from "../interfaces/car.interface";
+import {ICar} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 

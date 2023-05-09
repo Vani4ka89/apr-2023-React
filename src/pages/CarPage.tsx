@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {CarForm, Cars} from "../components";
 
-const CarPage = () => {
+const CarPage: FC = () => {
     return (
         <div>
             <CarForm/>

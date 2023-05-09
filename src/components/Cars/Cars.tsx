@@ -7,6 +7,7 @@ import {carActions} from "../../redux/slices/carSlice";
 const Cars: FC = () => {
 
     const {cars} = useAppSelector(state => state.carReducer);
+    console.log(cars);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
