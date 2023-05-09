@@ -1,13 +1,21 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 
-interface IProps {
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {Car} from "../Car/Car";
+import {carActions} from "../../redux/slices/carSlice";
 
-}
+const Cars: FC = () => {
 
-const Cars: FC<IProps> = () => {
+    const {cars} = useAppSelector(state => state.carReducer);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(carActions.getAll)
+    }, [dispatch])
+
     return (
         <div>
-            Cars
+            {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>
     );
 };

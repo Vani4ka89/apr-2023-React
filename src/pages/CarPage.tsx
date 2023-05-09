@@ -1,9 +1,11 @@
 import React from 'react';
+import {CarForm, Cars} from "../components";
 
 const CarPage = () => {
     return (
         <div>
-            CarPage
+            <CarForm/>
+            <Cars/>
         </div>
     );
 };

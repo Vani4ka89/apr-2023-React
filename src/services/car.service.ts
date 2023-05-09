@@ -1,7 +1,7 @@
 import {IRes} from "../types/response.type";
 import {ICar} from "../interfaces/car.interface";
 import {axiosService} from "./axios.service";
-import {urls} from "../constants/urls";
+import {urls} from "../constants";
 
 const carService = {
     getAll: (): IRes<ICar[]> => axiosService.get(urls.cars),

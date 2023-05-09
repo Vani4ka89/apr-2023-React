@@ -1,13 +1,11 @@
 import {FC} from 'react';
+import {NavLink} from "react-router-dom";
 
-interface IProps {
 
-}
-
-const Header: FC<IProps> = () => {
+const Header: FC = () => {
     return (
         <div>
-            Header
+            <NavLink to={'cars'}>Cars</NavLink>
         </div>
     );
 };
