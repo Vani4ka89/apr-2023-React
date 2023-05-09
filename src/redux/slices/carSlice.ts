@@ -24,7 +24,6 @@ const getAll = createAsyncThunk<ICar[], void>(
         try {
             const {data} = await carService.getAll()
             return data
-            console.log(data);
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)

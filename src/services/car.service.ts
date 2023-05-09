@@ -1,4 +1,4 @@
-import {IRes} from "../types/response.type";
+import {IRes} from "../types";
 import {ICar} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
