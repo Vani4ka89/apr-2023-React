@@ -2,17 +2,16 @@ import {FC, useEffect} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {Car} from "../Car/Car";
-import {carActions} from "../../redux/slices/carSlice";
+import {carActions} from "../../redux";
 
 const Cars: FC = () => {
 
-    const {cars} = useAppSelector(state => state.carReducer);
-    console.log(cars);
+    const {cars, trigger} = useAppSelector(state => state.carReducer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(carActions.getAll)
-    }, [dispatch])
+        dispatch(carActions.getAll())
+    }, [dispatch, trigger])
 
     return (
         <div>

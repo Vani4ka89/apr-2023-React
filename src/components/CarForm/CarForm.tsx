@@ -1,14 +1,44 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
+import {SubmitHandler, useForm} from "react-hook-form";
 
-interface IProps {
+import {ICar} from "../../interfaces";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {carActions} from "../../redux";
 
-}
 
-const CarForm: FC<IProps> = () => {
+const CarForm: FC = () => {
+
+    const {register, handleSubmit, reset, setValue} = useForm<ICar>();
+    const dispatch = useAppDispatch();
+    const {carForUpdate} = useAppSelector(state => state.carReducer);
+
+    useEffect(() => {
+        if (carForUpdate) {
+            setValue('brand', carForUpdate.brand)
+            setValue('price', carForUpdate.price)
+            setValue('year', carForUpdate.year)
+        }
+    }, [dispatch, setValue, carForUpdate])
+
+    const save: SubmitHandler<ICar> = async (car) => {
+        await dispatch(carActions.create({car}))
+        reset()
+    };
+
+    const update: SubmitHandler<ICar> = async (car) => {
+        await dispatch(carActions.update({id: carForUpdate.id, car}))
+        reset()
+    }
+
     return (
-        <div>
-            CarForm
-        </div>
+        <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
+            <hr/>
+            <input type="text" placeholder={'brand'} {...register('brand')}/>
+            <input type="text" placeholder={'price'} {...register('price')}/>
+            <input type="text" placeholder={'year'} {...register('year')}/>
+            <button>{carForUpdate ? 'Update' : 'Create'}</button>
+            <hr/>
+        </form>
     );
 };
 

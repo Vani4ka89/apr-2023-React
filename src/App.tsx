@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import {CarPage} from "./pages/CarPage";
+import {CarPage} from "./pages";
 
 const App = () => {
     return (
