@@ -1,8 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 
-import {carReducer} from "./slices/carSlice";
+import {authReducer, carReducer} from "./slices";
 
 const rootReducer = combineReducers({
+    authReducer,
     carReducer
 });
 
