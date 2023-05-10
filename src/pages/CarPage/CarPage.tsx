@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {CarForm, Cars} from "../components";
+import {CarForm, Cars} from "../../components";
 import css from './CarPage.module.css'
 
 const CarPage: FC = () => {

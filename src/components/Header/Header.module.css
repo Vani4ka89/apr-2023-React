@@ -1,12 +1,13 @@
 .Header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 50px;
     background-color: black;
 }
 
 .Header a {
+    padding: 5px 10px;
     text-decoration: none;
     font-size: 25px;
     color: azure;
