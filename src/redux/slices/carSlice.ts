@@ -1,19 +1,19 @@
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
+import {AxiosError} from "axios";
 
 import {ICar, IError} from "../../interfaces";
 import {carService} from "../../services";
-import {AxiosError} from "axios";
 
-export interface IState {
-    cars: ICar[],
-    errors: IError | null,
-    carForUpdate: ICar | null,
+interface IState {
+    cars: ICar[];
+    error: IError;
+    carForUpdate: ICar;
     trigger: boolean
 }
 
 const initialState: IState = {
     cars: [],
-    errors: null,
+    error: null,
     carForUpdate: null,
     trigger: false
 }
@@ -43,7 +43,7 @@ const create = createAsyncThunk<void, { car: ICar }>(
     }
 )
 
-const update = createAsyncThunk<void, { car: ICar, id: number }>(
+const update = createAsyncThunk<void, { id: number, car: ICar }>(
     'carSlice/update',
     async ({id, car}, {rejectWithValue}) => {
         try {
@@ -85,12 +85,12 @@ const slice = createSlice({
                 state.carForUpdate = null
             })
 
-            .addMatcher(isFulfilled(create, update, deleteCar), state => {
-                state.trigger = !state.trigger
+            .addMatcher(isRejectedWithValue(), (state, action) => {
+                state.error = action.payload
             })
 
-            .addMatcher(isRejectedWithValue(), (state, action) => {
-                state.errors = action.payload
+            .addMatcher(isFulfilled(create, update, deleteCar), state => {
+                state.trigger = !state.trigger
             })
 });
 
