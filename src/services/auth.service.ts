@@ -1,15 +1,13 @@
-import {AxiosResponse} from "axios";
-
 import {IAuth, ITokens, IUser} from "../interfaces";
 import {IRes} from "../types";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
-
+import {AxiosResponse} from "axios";
 
 class AuthService {
 
-    private readonly accessKey = 'access';
-    private readonly refreshKey = 'refresh';
+    private readonly accessKey = 'access'
+    private readonly refreshKey = 'refresh'
 
     register(user: IAuth): IRes<IUser> {
         return axiosService.post(urls.auth.register, user)
@@ -39,7 +37,6 @@ class AuthService {
         localStorage.removeItem(this.accessKey)
         localStorage.removeItem(this.refreshKey)
     }
-
 }
 
 export const authService = new AuthService();

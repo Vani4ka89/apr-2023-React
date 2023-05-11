@@ -14,7 +14,7 @@ const Header: FC = () => {
                 me ?
                     <div>
                         <h4>{me.username}</h4>
-                        <button>log out</button>
+                        <button>logout</button>
                     </div>
                     :
                     <div>
