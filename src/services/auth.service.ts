@@ -1,8 +1,9 @@
+import {AxiosResponse} from "axios";
+
 import {IAuth, ITokens, IUser} from "../interfaces";
 import {IRes} from "../types";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
-import {AxiosResponse} from "axios";
 
 class AuthService {
 
