@@ -4,6 +4,16 @@
     align-items: center;
     height: 50px;
     background-color: black;
+    color: cornflowerblue;
+}
+
+.Header h1 {
+    padding-left: 10px;
+}
+
+.Header h4 {
+    margin: 0;
+    padding: 0;
 }
 
 .Header a {

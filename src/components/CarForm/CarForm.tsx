@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {carActions} from "../../redux";
 
 const CarForm: FC = () => {
-    const {register, handleSubmit, reset, setValue}
+    const {register, handleSubmit, formState: {isValid}, reset, setValue}
         = useForm<ICar>();
     const dispatch = useAppDispatch();
     const {carForUpdate} = useAppSelector(state => state.carReducer);
@@ -31,10 +31,10 @@ const CarForm: FC = () => {
 
     return (
         <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
-            <input type="text" placeholder={'brand'} {...register('brand')}/>
-            <input type="text" placeholder={'price'} {...register('price')}/>
-            <input type="text" placeholder={'year'} {...register('year')}/>
-            <button>{carForUpdate ? 'Update' : 'Create'}</button>
+            <input type="text" placeholder={'brand'} {...register('brand', {required: true})}/>
+            <input type="text" placeholder={'price'} {...register('price', {required: true})}/>
+            <input type="text" placeholder={'year'} {...register('year', {required: true})}/>
+            <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Create'}</button>
             <hr/>
         </form>
     );

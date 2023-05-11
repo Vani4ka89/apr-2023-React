@@ -1,9 +1,11 @@
 import React, {FC} from 'react';
 
+import {LoginForm} from "../../components";
+
 const LoginPage: FC = () => {
     return (
         <div>
-            LoginPage
+            <LoginForm/>
         </div>
     );
 };
