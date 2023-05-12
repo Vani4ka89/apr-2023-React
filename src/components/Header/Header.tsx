@@ -1,20 +1,29 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 
 import css from './Header.module.css';
-import {useAppSelector} from "../../hooks";
-
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {authActions} from "../../redux/slices";
+import {authService} from "../../services";
 
 const Header: FC = () => {
     const {me} = useAppSelector(state => state.authReducer);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (!me && authService.getAccessToken()) {
+            dispatch(authActions.me())
+        }
+    }, [me, dispatch])
+
     return (
         <div className={css.Header}>
             <h1>Logo</h1>
             {
                 me ?
                     <div>
-                        <h4>{me.username}</h4>
-                        <button>logout</button>
+                        <div>{me.username}</div>
+                        <button>Logout</button>
                     </div>
                     :
                     <div>
@@ -22,8 +31,10 @@ const Header: FC = () => {
                         <NavLink to={'register'}>Register</NavLink>
                     </div>
             }
+
         </div>
-    );
+    )
+        ;
 };
 
 export {Header};
