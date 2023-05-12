@@ -27,8 +27,8 @@ const RegisterForm: FC = () => {
 
     return (
         <form onSubmit={handleSubmit(registerUser)}>
-            <input type="text" placeholder={'username'} {...register('username', {required: true})}/>
-            <input type="text" placeholder={'password'} {...register('password', {required: true})}/>
+            <input type="text" placeholder={'username'} {...register('username')}/>
+            <input type="text" placeholder={'password'} {...register('password')}/>
             <button disabled={!isValid}>Register</button>
             {Object.keys(errors).length > 0 && <div>{Object.values(errors)[0].message}</div>}
             {error && <div>{'this user has already exist'}</div>}

@@ -1,10 +1,10 @@
 import React from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 import {IAuth} from "../../interfaces";
 import {useAppDispatch} from "../../hooks";
 import {authActions} from "../../redux/slices";
-import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
 
