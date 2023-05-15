@@ -22,7 +22,7 @@ const LoginForm = () => {
     return (
         <form onSubmit={handleSubmit(login)}>
             <input type="text" placeholder={'username'} {...register('username', {required: true})}/>
-            <input type="password" placeholder={'password'} {...register('password', {required: true})}/>
+            <input type="text" placeholder={'password'} {...register('password', {required: true})}/>
             <button disabled={!isValid}>Login</button>
         </form>
     );
