@@ -5,6 +5,7 @@ const auth = '/auth';
 const urls = {
     cars,
     byId: (id: number): string => `${cars}/${id}`,
+    addPhoto: (id: number): string => `${cars}/${id}/photo`,
     auth: {
         register: '/users',
         login: auth,
